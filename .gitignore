@@ -1,0 +1,30 @@
+# READ THE FOLLOWING BEFORE EDITING THIS FILE!
+#
+# If you are about to add an ignore that only affects one specific
+# project please add it to the .gitignore file that is located in
+# that projects directory; eg. src/Web.Whatever/.gitignore
+#
+# If the file doesn't exist, add it.
+#
+# If the ignore is on another level then for a certain project I
+# trust you'll make the proper judgement and place it properly.
+#
+# The purpose of keeping the ignores as close to the physical location
+# as possible is to simplify the maintenance of the files themselves.
+# If a directory is removed all ignores that are specific to it will
+# be removed as well without having to remember to edit this file.
+
+obj/
+[bB]in/
+
+
+# tool artifacts
+*ReSharper*
+*.suo
+*.swp
+*.user
+*.docstates
+
+# global
+*.log
+/logs
