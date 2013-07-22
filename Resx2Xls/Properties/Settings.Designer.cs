@@ -26,12 +26,12 @@ namespace Resx2Xls.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string FolderPath {
+        public string ResxFolderPath {
             get {
-                return ((string)(this["FolderPath"]));
+                return ((string)(this["ResxFolderPath"]));
             }
             set {
-                this["FolderPath"] = value;
+                this["ResxFolderPath"] = value;
             }
         }
         
@@ -56,6 +56,18 @@ namespace Resx2Xls.Properties {
             }
             set {
                 this["CultureList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string XlsFolderPath {
+            get {
+                return ((string)(this["XlsFolderPath"]));
+            }
+            set {
+                this["XlsFolderPath"] = value;
             }
         }
     }

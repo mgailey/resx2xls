@@ -29,32 +29,30 @@ namespace Resx2Xls
         private void InitializeComponent()
         {
             this.resxDirectoryDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.openFileDialogXls = new System.Windows.Forms.OpenFileDialog();
             this.wizardControl1 = new WizardBase.WizardControl();
             this.startStep1 = new WizardBase.StartStep();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonUpdateXls = new System.Windows.Forms.RadioButton();
             this.radioButtonBuildXls = new System.Windows.Forms.RadioButton();
             this.radioButtonCreateXls = new System.Windows.Forms.RadioButton();
             this.intermediateStepProject = new WizardBase.IntermediateStep();
             this.labelFolder = new System.Windows.Forms.Label();
-            this.textBoxFolder = new System.Windows.Forms.TextBox();
+            this.textBoxResxFolder = new System.Windows.Forms.TextBox();
             this.buttonBrowse = new System.Windows.Forms.Button();
             this.intermediateStepCultures = new WizardBase.IntermediateStep();
+            this.buttonRemove = new System.Windows.Forms.Button();
+            this.buttonRemoveAll = new System.Windows.Forms.Button();
+            this.buttonAdd = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonAddAll = new System.Windows.Forms.Button();
             this.listBoxCultures = new System.Windows.Forms.ListBox();
             this.listBoxSelected = new System.Windows.Forms.ListBox();
-            this.intermediateStepOptions = new WizardBase.IntermediateStep();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxExclude = new System.Windows.Forms.TextBox();
             this.intermediateStepXlsSelect = new WizardBase.IntermediateStep();
             this.labelXlsFile = new System.Windows.Forms.Label();
-            this.textBoxXls = new System.Windows.Forms.TextBox();
-            this.buttonBrowseXls = new System.Windows.Forms.Button();
+            this.textBoxXlsDirectory = new System.Windows.Forms.TextBox();
+            this.buttonBrowseXlsDirectory = new System.Windows.Forms.Button();
             this.finishStep1 = new WizardBase.FinishStep();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxSummary = new System.Windows.Forms.TextBox();
@@ -63,19 +61,13 @@ namespace Resx2Xls
             this.groupBox1.SuspendLayout();
             this.intermediateStepProject.SuspendLayout();
             this.intermediateStepCultures.SuspendLayout();
-            this.intermediateStepOptions.SuspendLayout();
             this.intermediateStepXlsSelect.SuspendLayout();
             this.finishStep1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // openFileDialogXls
-            // 
-            this.openFileDialogXls.DefaultExt = "xls";
-            this.openFileDialogXls.Filter = "*.xls|*.xls";
-            // 
             // wizardControl1
             // 
-            this.wizardControl1.BackButtonEnabled = false;
+            this.wizardControl1.BackButtonEnabled = true;
             this.wizardControl1.BackButtonVisible = true;
             this.wizardControl1.CancelButtonEnabled = true;
             this.wizardControl1.CancelButtonVisible = true;
@@ -90,11 +82,10 @@ namespace Resx2Xls
             this.wizardControl1.WizardSteps.Add(this.startStep1);
             this.wizardControl1.WizardSteps.Add(this.intermediateStepProject);
             this.wizardControl1.WizardSteps.Add(this.intermediateStepCultures);
-            this.wizardControl1.WizardSteps.Add(this.intermediateStepOptions);
             this.wizardControl1.WizardSteps.Add(this.intermediateStepXlsSelect);
             this.wizardControl1.WizardSteps.Add(this.finishStep1);
             this.wizardControl1.BackButtonClick += new WizardBase.WizardClickEventHandler(this.wizardControl1_BackButtonClick);
-            this.wizardControl1.CurrentStepIndexChanged += new System.EventHandler(this.wizardControl1_CurrentStepIndexChanged);
+            this.wizardControl1.CancelButtonClick += new System.EventHandler(this.wizardControl1_CancelButtonClick);
             this.wizardControl1.FinishButtonClick += new System.EventHandler(this.wizardControl1_FinishButtonClick);
             this.wizardControl1.NextButtonClick += new WizardBase.WizardNextButtonClickEventHandler(this.wizardControl1_NextButtonClick);
             // 
@@ -108,11 +99,9 @@ namespace Resx2Xls
             this.startStep1.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.startStep1.Title = "Welcome to the Resx to Xls Wizard.";
             this.startStep1.TitleFont = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold);
-            this.startStep1.Click += new System.EventHandler(this.startStep1_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButtonUpdateXls);
             this.groupBox1.Controls.Add(this.radioButtonBuildXls);
             this.groupBox1.Controls.Add(this.radioButtonCreateXls);
             this.groupBox1.Location = new System.Drawing.Point(198, 93);
@@ -122,24 +111,14 @@ namespace Resx2Xls
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
             // 
-            // radioButtonUpdateXls
-            // 
-            this.radioButtonUpdateXls.AutoSize = true;
-            this.radioButtonUpdateXls.Location = new System.Drawing.Point(45, 75);
-            this.radioButtonUpdateXls.Name = "radioButtonUpdateXls";
-            this.radioButtonUpdateXls.Size = new System.Drawing.Size(204, 17);
-            this.radioButtonUpdateXls.TabIndex = 2;
-            this.radioButtonUpdateXls.Text = "Import translations directory from excel";
-            this.radioButtonUpdateXls.UseVisualStyleBackColor = true;
-            // 
             // radioButtonBuildXls
             // 
             this.radioButtonBuildXls.AutoSize = true;
             this.radioButtonBuildXls.Location = new System.Drawing.Point(45, 52);
             this.radioButtonBuildXls.Name = "radioButtonBuildXls";
-            this.radioButtonBuildXls.Size = new System.Drawing.Size(172, 17);
+            this.radioButtonBuildXls.Size = new System.Drawing.Size(161, 17);
             this.radioButtonBuildXls.TabIndex = 1;
-            this.radioButtonBuildXls.Text = "Import transaltion file from excel";
+            this.radioButtonBuildXls.Text = "Import transaltions from excel";
             this.radioButtonBuildXls.UseVisualStyleBackColor = true;
             // 
             // radioButtonCreateXls
@@ -153,17 +132,16 @@ namespace Resx2Xls
             this.radioButtonCreateXls.TabStop = true;
             this.radioButtonCreateXls.Text = "Export translations to excel\r\n";
             this.radioButtonCreateXls.UseVisualStyleBackColor = true;
-            this.radioButtonCreateXls.CheckedChanged += new System.EventHandler(this.radioButtonCreateXls_CheckedChanged);
             // 
             // intermediateStepProject
             // 
             this.intermediateStepProject.BindingImage = global::Resx2Xls.Properties.Resources.topbar;
             this.intermediateStepProject.Controls.Add(this.labelFolder);
-            this.intermediateStepProject.Controls.Add(this.textBoxFolder);
+            this.intermediateStepProject.Controls.Add(this.textBoxResxFolder);
             this.intermediateStepProject.Controls.Add(this.buttonBrowse);
             this.intermediateStepProject.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.intermediateStepProject.Name = "intermediateStepProject";
-            this.intermediateStepProject.Subtitle = "Browse the root folder of your .Net Project..";
+            this.intermediateStepProject.Subtitle = "Browse the resx folder of your .Net Project..";
             this.intermediateStepProject.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.intermediateStepProject.Title = "Select your .Net Project.";
             this.intermediateStepProject.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
@@ -174,17 +152,17 @@ namespace Resx2Xls
             this.labelFolder.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelFolder.Location = new System.Drawing.Point(20, 120);
             this.labelFolder.Name = "labelFolder";
-            this.labelFolder.Size = new System.Drawing.Size(217, 13);
+            this.labelFolder.Size = new System.Drawing.Size(250, 13);
             this.labelFolder.TabIndex = 10;
-            this.labelFolder.Text = "Project Root (that contains neutral resx files):";
+            this.labelFolder.Text = "Project Resx Folder (that contains neutral resx files):";
             // 
-            // textBoxFolder
+            // textBoxResxFolder
             // 
-            this.textBoxFolder.Location = new System.Drawing.Point(23, 136);
-            this.textBoxFolder.Name = "textBoxFolder";
-            this.textBoxFolder.Size = new System.Drawing.Size(438, 20);
-            this.textBoxFolder.TabIndex = 9;
-            this.textBoxFolder.TextChanged += new System.EventHandler(this.textBoxFolder_TextChanged);
+            this.textBoxResxFolder.Location = new System.Drawing.Point(23, 136);
+            this.textBoxResxFolder.Name = "textBoxResxFolder";
+            this.textBoxResxFolder.Size = new System.Drawing.Size(438, 20);
+            this.textBoxResxFolder.TabIndex = 9;
+            this.textBoxResxFolder.TextChanged += new System.EventHandler(this.textBoxResxFolder_TextChanged);
             // 
             // buttonBrowse
             // 
@@ -199,25 +177,62 @@ namespace Resx2Xls
             // intermediateStepCultures
             // 
             this.intermediateStepCultures.BindingImage = global::Resx2Xls.Properties.Resources.topbar;
+            this.intermediateStepCultures.Controls.Add(this.buttonRemove);
+            this.intermediateStepCultures.Controls.Add(this.buttonRemoveAll);
+            this.intermediateStepCultures.Controls.Add(this.buttonAdd);
             this.intermediateStepCultures.Controls.Add(this.label5);
             this.intermediateStepCultures.Controls.Add(this.label4);
             this.intermediateStepCultures.Controls.Add(this.label3);
             this.intermediateStepCultures.Controls.Add(this.label1);
-            this.intermediateStepCultures.Controls.Add(this.buttonAdd);
+            this.intermediateStepCultures.Controls.Add(this.buttonAddAll);
             this.intermediateStepCultures.Controls.Add(this.listBoxCultures);
             this.intermediateStepCultures.Controls.Add(this.listBoxSelected);
             this.intermediateStepCultures.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.intermediateStepCultures.Name = "intermediateStepCultures";
-            this.intermediateStepCultures.Subtitle = "This step creates a new xls file that contains all your resource keys.";
+            this.intermediateStepCultures.Subtitle = "This step creates a new xls file per culture that contains all your resource keys" +
+    ".";
             this.intermediateStepCultures.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.intermediateStepCultures.Title = "Select the Cultures that you want include in the project.";
             this.intermediateStepCultures.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
+            // 
+            // buttonRemove
+            // 
+            this.buttonRemove.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonRemove.Location = new System.Drawing.Point(222, 158);
+            this.buttonRemove.Name = "buttonRemove";
+            this.buttonRemove.Size = new System.Drawing.Size(52, 23);
+            this.buttonRemove.TabIndex = 13;
+            this.buttonRemove.Text = "<";
+            this.buttonRemove.UseVisualStyleBackColor = true;
+            this.buttonRemove.Click += new System.EventHandler(this.buttonRemove_Click);
+            // 
+            // buttonRemoveAll
+            // 
+            this.buttonRemoveAll.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonRemoveAll.Location = new System.Drawing.Point(222, 187);
+            this.buttonRemoveAll.Name = "buttonRemoveAll";
+            this.buttonRemoveAll.Size = new System.Drawing.Size(52, 23);
+            this.buttonRemoveAll.TabIndex = 12;
+            this.buttonRemoveAll.Text = "<<";
+            this.buttonRemoveAll.UseVisualStyleBackColor = true;
+            this.buttonRemoveAll.Click += new System.EventHandler(this.buttonRemoveAll_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonAdd.Location = new System.Drawing.Point(222, 129);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(52, 23);
+            this.buttonAdd.TabIndex = 11;
+            this.buttonAdd.Text = ">";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(278, 224);
+            this.label5.Location = new System.Drawing.Point(277, 355);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(160, 13);
             this.label5.TabIndex = 10;
@@ -227,7 +242,7 @@ namespace Resx2Xls
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(64, 224);
+            this.label4.Location = new System.Drawing.Point(64, 355);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(143, 13);
             this.label4.TabIndex = 9;
@@ -253,24 +268,26 @@ namespace Resx2Xls
             this.label1.TabIndex = 5;
             this.label1.Text = "Available Cultures:";
             // 
-            // buttonAdd
+            // buttonAddAll
             // 
-            this.buttonAdd.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonAdd.Location = new System.Drawing.Point(222, 100);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(52, 23);
-            this.buttonAdd.TabIndex = 7;
-            this.buttonAdd.Text = ">>";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonAddAll.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonAddAll.Location = new System.Drawing.Point(222, 100);
+            this.buttonAddAll.Name = "buttonAddAll";
+            this.buttonAddAll.Size = new System.Drawing.Size(52, 23);
+            this.buttonAddAll.TabIndex = 7;
+            this.buttonAddAll.Text = ">>";
+            this.buttonAddAll.UseVisualStyleBackColor = true;
+            this.buttonAddAll.Click += new System.EventHandler(this.buttonAddAll_Click);
             // 
             // listBoxCultures
             // 
             this.listBoxCultures.FormattingEnabled = true;
             this.listBoxCultures.Location = new System.Drawing.Point(67, 100);
             this.listBoxCultures.Name = "listBoxCultures";
-            this.listBoxCultures.Size = new System.Drawing.Size(149, 121);
+            this.listBoxCultures.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxCultures.Size = new System.Drawing.Size(149, 251);
             this.listBoxCultures.TabIndex = 4;
+            this.listBoxCultures.SelectedIndexChanged += new System.EventHandler(this.listBoxCultures_SelectedIndexChanged);
             this.listBoxCultures.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxCultures_MouseDoubleClick);
             // 
             // listBoxSelected
@@ -278,52 +295,22 @@ namespace Resx2Xls
             this.listBoxSelected.FormattingEnabled = true;
             this.listBoxSelected.Location = new System.Drawing.Point(280, 100);
             this.listBoxSelected.Name = "listBoxSelected";
-            this.listBoxSelected.Size = new System.Drawing.Size(149, 121);
+            this.listBoxSelected.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.listBoxSelected.Size = new System.Drawing.Size(149, 251);
             this.listBoxSelected.TabIndex = 6;
             this.listBoxSelected.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxSelected_MouseDoubleClick);
-            // 
-            // intermediateStepOptions
-            // 
-            this.intermediateStepOptions.BindingImage = global::Resx2Xls.Properties.Resources.topbar;
-            this.intermediateStepOptions.Controls.Add(this.label2);
-            this.intermediateStepOptions.Controls.Add(this.textBoxExclude);
-            this.intermediateStepOptions.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.intermediateStepOptions.Name = "intermediateStepOptions";
-            this.intermediateStepOptions.Subtitle = "Advanced configuration.";
-            this.intermediateStepOptions.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.intermediateStepOptions.Title = "Options.";
-            this.intermediateStepOptions.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label2.Location = new System.Drawing.Point(33, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(138, 13);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Exclude Keys that end with:";
-            // 
-            // textBoxExclude
-            // 
-            this.textBoxExclude.Location = new System.Drawing.Point(33, 101);
-            this.textBoxExclude.Multiline = true;
-            this.textBoxExclude.Name = "textBoxExclude";
-            this.textBoxExclude.Size = new System.Drawing.Size(179, 121);
-            this.textBoxExclude.TabIndex = 13;
-            this.textBoxExclude.TextChanged += new System.EventHandler(this.textBoxExclude_TextChanged);
             // 
             // intermediateStepXlsSelect
             // 
             this.intermediateStepXlsSelect.BindingImage = global::Resx2Xls.Properties.Resources.topbar;
             this.intermediateStepXlsSelect.Controls.Add(this.labelXlsFile);
-            this.intermediateStepXlsSelect.Controls.Add(this.textBoxXls);
-            this.intermediateStepXlsSelect.Controls.Add(this.buttonBrowseXls);
+            this.intermediateStepXlsSelect.Controls.Add(this.textBoxXlsDirectory);
+            this.intermediateStepXlsSelect.Controls.Add(this.buttonBrowseXlsDirectory);
             this.intermediateStepXlsSelect.ForeColor = System.Drawing.SystemColors.HighlightText;
             this.intermediateStepXlsSelect.Name = "intermediateStepXlsSelect";
-            this.intermediateStepXlsSelect.Subtitle = "Give a valid xls document that contains localization info.";
+            this.intermediateStepXlsSelect.Subtitle = "Give a valid document directory that will contain localization info.";
             this.intermediateStepXlsSelect.SubtitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.intermediateStepXlsSelect.Title = "Select your Excel document.";
+            this.intermediateStepXlsSelect.Title = "Select your translations directory.";
             this.intermediateStepXlsSelect.TitleFont = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             // 
             // labelXlsFile
@@ -332,27 +319,28 @@ namespace Resx2Xls
             this.labelXlsFile.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelXlsFile.Location = new System.Drawing.Point(32, 94);
             this.labelXlsFile.Name = "labelXlsFile";
-            this.labelXlsFile.Size = new System.Drawing.Size(134, 13);
+            this.labelXlsFile.Size = new System.Drawing.Size(135, 13);
             this.labelXlsFile.TabIndex = 2;
-            this.labelXlsFile.Text = "Excel resource(s) directory:";
+            this.labelXlsFile.Text = "Excel translations directory:";
             // 
-            // textBoxXls
+            // textBoxXlsDirectory
             // 
-            this.textBoxXls.Location = new System.Drawing.Point(35, 110);
-            this.textBoxXls.Name = "textBoxXls";
-            this.textBoxXls.Size = new System.Drawing.Size(385, 20);
-            this.textBoxXls.TabIndex = 0;
+            this.textBoxXlsDirectory.Location = new System.Drawing.Point(35, 110);
+            this.textBoxXlsDirectory.Name = "textBoxXlsDirectory";
+            this.textBoxXlsDirectory.Size = new System.Drawing.Size(385, 20);
+            this.textBoxXlsDirectory.TabIndex = 0;
+            this.textBoxXlsDirectory.TextChanged += new System.EventHandler(this.textBoxXlsDirectory_TextChanged);
             // 
-            // buttonBrowseXls
+            // buttonBrowseXlsDirectory
             // 
-            this.buttonBrowseXls.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonBrowseXls.Location = new System.Drawing.Point(426, 108);
-            this.buttonBrowseXls.Name = "buttonBrowseXls";
-            this.buttonBrowseXls.Size = new System.Drawing.Size(75, 23);
-            this.buttonBrowseXls.TabIndex = 1;
-            this.buttonBrowseXls.Text = "Browse";
-            this.buttonBrowseXls.UseVisualStyleBackColor = true;
-            this.buttonBrowseXls.Click += new System.EventHandler(this.buttonBrowseXls_Click);
+            this.buttonBrowseXlsDirectory.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonBrowseXlsDirectory.Location = new System.Drawing.Point(426, 108);
+            this.buttonBrowseXlsDirectory.Name = "buttonBrowseXlsDirectory";
+            this.buttonBrowseXlsDirectory.Size = new System.Drawing.Size(75, 23);
+            this.buttonBrowseXlsDirectory.TabIndex = 1;
+            this.buttonBrowseXlsDirectory.Text = "Browse";
+            this.buttonBrowseXlsDirectory.UseVisualStyleBackColor = true;
+            this.buttonBrowseXlsDirectory.Click += new System.EventHandler(this.buttonBrowseXlsDirectory_Click);
             // 
             // finishStep1
             // 
@@ -395,8 +383,6 @@ namespace Resx2Xls
             this.intermediateStepProject.PerformLayout();
             this.intermediateStepCultures.ResumeLayout(false);
             this.intermediateStepCultures.PerformLayout();
-            this.intermediateStepOptions.ResumeLayout(false);
-            this.intermediateStepOptions.PerformLayout();
             this.intermediateStepXlsSelect.ResumeLayout(false);
             this.intermediateStepXlsSelect.PerformLayout();
             this.finishStep1.ResumeLayout(false);
@@ -410,17 +396,14 @@ namespace Resx2Xls
         private System.Windows.Forms.FolderBrowserDialog resxDirectoryDialog;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox listBoxCultures;
-        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonAddAll;
         private System.Windows.Forms.ListBox listBoxSelected;
-        private System.Windows.Forms.OpenFileDialog openFileDialogXls;
         private System.Windows.Forms.Label labelXlsFile;
-        private System.Windows.Forms.Button buttonBrowseXls;
-        private System.Windows.Forms.TextBox textBoxXls;
+        private System.Windows.Forms.Button buttonBrowseXlsDirectory;
+        private System.Windows.Forms.TextBox textBoxXlsDirectory;
         private System.Windows.Forms.Button buttonBrowse;
-        private System.Windows.Forms.TextBox textBoxFolder;
+        private System.Windows.Forms.TextBox textBoxResxFolder;
         private System.Windows.Forms.Label labelFolder;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxExclude;
         private WizardBase.WizardControl wizardControl1;
         private WizardBase.StartStep startStep1;
         private WizardBase.IntermediateStep intermediateStepProject;
@@ -428,16 +411,17 @@ namespace Resx2Xls
         private WizardBase.FinishStep finishStep1;
         private WizardBase.IntermediateStep intermediateStepXlsSelect;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonUpdateXls;
         private System.Windows.Forms.RadioButton radioButtonBuildXls;
         private System.Windows.Forms.RadioButton radioButtonCreateXls;
-        private WizardBase.IntermediateStep intermediateStepOptions;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxSummary;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.FolderBrowserDialog xlsDirectoryDialog;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonRemove;
+        private System.Windows.Forms.Button buttonRemoveAll;
     }
 }
 

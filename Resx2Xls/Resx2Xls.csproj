@@ -50,7 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CultureInfoComparer.cs" />
-    <Compile Include="Resx.cs" />
+    <Compile Include="FileInfoExtensions.cs" />
+    <Compile Include="ListBoxExtensions.cs" />
+    <Compile Include="ResxExport.cs" />
+    <Compile Include="ResxImport.cs" />
     <Compile Include="Resx2XlsForm.cs">
       <SubType>Form</SubType>
     </Compile>
