@@ -67,7 +67,7 @@ namespace Resx2Xls
             // 
             // wizardControl1
             // 
-            this.wizardControl1.BackButtonEnabled = true;
+            this.wizardControl1.BackButtonEnabled = false;
             this.wizardControl1.BackButtonVisible = true;
             this.wizardControl1.CancelButtonEnabled = true;
             this.wizardControl1.CancelButtonVisible = true;
@@ -118,7 +118,7 @@ namespace Resx2Xls
             this.radioButtonBuildXls.Name = "radioButtonBuildXls";
             this.radioButtonBuildXls.Size = new System.Drawing.Size(161, 17);
             this.radioButtonBuildXls.TabIndex = 1;
-            this.radioButtonBuildXls.Text = "Import transaltions from excel";
+            this.radioButtonBuildXls.Text = "Import translations from excel";
             this.radioButtonBuildXls.UseVisualStyleBackColor = true;
             // 
             // radioButtonCreateXls
