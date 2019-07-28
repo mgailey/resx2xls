@@ -16,9 +16,9 @@ namespace Resx2Xls
 
             var translations = new List<Translation>();
 
-            using (var package = new ExcelPackage(sourceFile))
+            using (var excel = new ExcelPackage(sourceFile))
             {
-                var worksheet = package.Workbook.Worksheets.First();
+                var worksheet = excel.Workbook.Worksheets.First();
                 var rowCount = worksheet.Dimension.End.Row;
                 for (var row = 2; row <= rowCount; row++)
                 {
