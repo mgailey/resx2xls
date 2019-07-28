@@ -170,8 +170,6 @@ namespace Resx2Xls
             {
                 Cursor = Cursors.Default;  
             }
-
-            Close();
         }
 
         private void FinishXlsImport(string[] cultures)
