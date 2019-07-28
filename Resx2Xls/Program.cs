@@ -1,4 +1,3 @@
-using System;
 using System.Windows.Forms;
 
 namespace Resx2Xls
@@ -8,7 +7,6 @@ namespace Resx2Xls
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
