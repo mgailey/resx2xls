@@ -24,7 +24,9 @@ obj/
 *.swp
 *.user
 *.docstates
+**/.idea*/
 
 # global
 *.log
 /logs
+**/packages*/

@@ -85,7 +85,7 @@ namespace Resx2Xls
 
         private void SaveCultures()
         {
-            Settings.Default.CultureList = String.Join(";", listBoxSelected.Items.Cast<CultureInfo>().Select(ci => ci.Name).ToArray());
+            Settings.Default.CultureList = string.Join(";", listBoxSelected.Items.Cast<CultureInfo>().Select(ci => ci.Name).ToArray());
         }
 
         private void buttonBrowse_Click(object sender, EventArgs e)
@@ -155,8 +155,7 @@ namespace Resx2Xls
                 switch (operation)
                 {
                     case ResxToXlsOperation.Export:
-                        var excludeList = Settings.Default.ExcludeList.Split(';');
-                        FinishExport(excludeList, cultures);
+                        FinishExport(cultures);
                         break;
                     case ResxToXlsOperation.ImportFile:
                         FinishXlsImport(cultures);
@@ -177,7 +176,7 @@ namespace Resx2Xls
 
         private void FinishXlsImport(string[] cultures)
         {
-            if (String.IsNullOrEmpty(textBoxXlsDirectory.Text))
+            if (string.IsNullOrEmpty(textBoxXlsDirectory.Text))
             {
                 MessageBox.Show("You must select the Excel directory to import from", "Update",
                                 MessageBoxButtons.OK,
@@ -186,16 +185,16 @@ namespace Resx2Xls
                 return;
             }
 
-            var import = new ResxImport(new DirectoryInfo(textBoxResxFolder.Text), new DirectoryInfo(textBoxXlsDirectory.Text));
+            var import = new ResxImporter(new DirectoryInfo(textBoxResxFolder.Text), new DirectoryInfo(textBoxXlsDirectory.Text));
             import.Import(cultures);
 
             MessageBox.Show("Resources imported.", "Import", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
         }
 
-        private void FinishExport(string[] excludeList, string[] cultures)
+        private void FinishExport(string[] cultures)
         {
-            if (String.IsNullOrEmpty(textBoxResxFolder.Text))
+            if (string.IsNullOrEmpty(textBoxResxFolder.Text))
             {
                 MessageBox.Show("You must select a the .Net Project resx wich contains your updated resx files", "Update",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -203,7 +202,7 @@ namespace Resx2Xls
                 return;
             }
 
-            if (String.IsNullOrEmpty(textBoxXlsDirectory.Text))
+            if (string.IsNullOrEmpty(textBoxXlsDirectory.Text))
             {
                 MessageBox.Show("You must select the directory for your xls files", "Update",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -211,7 +210,7 @@ namespace Resx2Xls
                 return;
             }
 
-            var export = new ResxExport(new DirectoryInfo(textBoxResxFolder.Text), new DirectoryInfo(textBoxXlsDirectory.Text), excludeList);
+            var export = new ResxExporter(new DirectoryInfo(textBoxResxFolder.Text), new DirectoryInfo(textBoxXlsDirectory.Text));
             export.Export(cultures);
             MessageBox.Show("Localized Resources exported.", "Export", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);

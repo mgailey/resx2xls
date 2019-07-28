@@ -8,7 +8,7 @@ namespace Resx2Xls
         public static CultureInfo GetCulture(this FileInfo fi)
         {
             //Remove the extension and return the string	
-            var cult = new FileInfo(Path.GetFileNameWithoutExtension(fi.Name) ?? string.Empty).Extension.TrimStart('.');
+            var cult = new FileInfo(Path.GetFileNameWithoutExtension(fi.Name)).Extension.TrimStart('.');
 
             if (string.IsNullOrEmpty(cult)) return null;
 
